@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -79,11 +80,18 @@ public class SelectImageDialog extends BottomSheetDialogFragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                AsyncTaskCompat.executeParallel(new LoadImagesFromStorage());
+
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+                    new LoadImagesFromStorage().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                else
+                    AsyncTaskCompat.executeParallel(new LoadImagesFromStorage());
             }
         });
 
-        AsyncTaskCompat.executeParallel(new LoadImagesFromStorage());
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+            new LoadImagesFromStorage().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        else
+            AsyncTaskCompat.executeParallel(new LoadImagesFromStorage());
 
         setListeners();
 
