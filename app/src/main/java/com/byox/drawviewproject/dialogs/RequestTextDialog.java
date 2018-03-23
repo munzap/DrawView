@@ -59,7 +59,7 @@ public class RequestTextDialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
                 .setView(view)
-                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (onRequestTextListener != null)
@@ -67,7 +67,7 @@ public class RequestTextDialog extends DialogFragment {
                         dismiss();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (onRequestTextListener != null)

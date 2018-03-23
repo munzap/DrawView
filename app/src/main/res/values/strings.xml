@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">DrawView Library</string>
 
-    <string name="stroke_width">Stroke width: %1$d</string>
-    <string name="opacity">Opacity: %1$d</string>
-    <string name="font_size">Font size: %1$d</string>
+    <string name="stroke_width">Šířka čáry: %1$d</string>
+    <string name="opacity">Průhlednost: %1$d</string>
+    <string name="font_size">Velikost písma: %1$d</string>
 
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
@@ -15,6 +15,8 @@
     <string name="save_draw">Save draw</string>
     <string name="camera_option">Camera option</string>
     <string name="draw_option">DrawView option</string>
+    <string name="confirm">Potvrdit</string>
+    <string name="cancel">Zrušit</string>
 
     <!-- ADS -->
     <string name="banner_ad_unit_id">ca-app-pub-6238951090454835/7400289908</string>
