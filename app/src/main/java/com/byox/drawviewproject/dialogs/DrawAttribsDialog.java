@@ -289,6 +289,9 @@ public class DrawAttribsDialog extends DialogFragment {
                         dismiss();
                     }
                 });
+
+        setRetainInstance(true);// PM_FIX mPaint is null when orientation will change. Maybe is better to use SerializablePaint from drawview library ?
+
         return builder.create();
     }
 
