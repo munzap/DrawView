@@ -6,7 +6,7 @@ android {
     buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.byox.drawviewproject"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 25
         versionCode 11
         versionName "2.6"
