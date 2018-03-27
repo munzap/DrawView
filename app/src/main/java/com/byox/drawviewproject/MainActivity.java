@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
     private void changeDrawTool() {
         SelectChoiceDialog selectChoiceDialog =
                 SelectChoiceDialog.newInstance("Select a draw tool",
-                        "PEN", "LINE", "ARROW", "RECTANGLE", "CIRCLE", "ELLIPSE");
+                        "PEN", "LINE", "POLYLINE", "ARROW", "RECTANGLE", "CIRCLE", "ELLIPSE");
         selectChoiceDialog.setOnChoiceDialogListener(new SelectChoiceDialog.OnChoiceDialogListener() {
             @Override
             public void onChoiceSelected(int position) {

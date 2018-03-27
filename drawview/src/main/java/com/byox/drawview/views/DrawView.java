@@ -212,6 +212,11 @@ public class DrawView extends FrameLayout implements View.OnTouchListener {
                                 mContentCanvas.drawLine(drawMove.getStartX(), drawMove.getStartY(),
                                         drawMove.getEndX(), drawMove.getEndY(), drawMove.getPaint());
                                 break;
+
+                            case POLYLINE:
+                                mContentCanvas.drawLine(drawMove.getStartX(), drawMove.getStartY(),
+                                        drawMove.getEndX(), drawMove.getEndY(), drawMove.getPaint());
+                                break;
                             case ARROW:
                                 mContentCanvas.drawLine(drawMove.getStartX(), drawMove.getStartY(),
                                         drawMove.getEndX(), drawMove.getEndY(), drawMove.getPaint());
@@ -318,11 +323,23 @@ public class DrawView extends FrameLayout implements View.OnTouchListener {
                             mDrawMoveHistoryIndex < mDrawMoveHistory.size() - 1)
                         mDrawMoveHistory = mDrawMoveHistory.subList(0, mDrawMoveHistoryIndex + 1);
 
-                    mDrawMoveHistory.add(DrawMove.newInstance()
-                            .setPaint(getNewPaintParams())
-                            .setStartX(touchX).setStartY(touchY)
-                            .setEndX(touchX).setEndY(touchY)
-                            .setDrawingMode(mDrawingMode).setDrawingTool(mDrawingTool));
+                    float startX = touchX;
+                    float startY = touchY;
+
+                    if(mDrawingTool == DrawingTool.POLYLINE && mDrawMoveHistoryIndex >= 0) {
+
+                            DrawMove previousMove = mDrawMoveHistory.get(mDrawMoveHistoryIndex);
+                            startX = previousMove.getEndX();
+                            startY = previousMove.getEndY();
+
+                    }
+                        mDrawMoveHistory.add(DrawMove.newInstance()
+                                .setPaint(getNewPaintParams())
+                                .setStartX(startX).setStartY(startY)
+                                .setEndX(touchX).setEndY(touchY)
+                                .setDrawingMode(mDrawingMode).setDrawingTool(mDrawingTool));
+
+
                     lastMoveIndex = mDrawMoveHistory.size() - 1;
 
 //                    Paint currentPaint = mDrawMoveHistory.get(mDrawMoveHistory.size() - 1).getPaint();
